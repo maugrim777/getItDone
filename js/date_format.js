@@ -44,7 +44,6 @@ function getCurrentDate() {
 
     let fullDate = `${month} ${day}`
 
-    console.log(fullDate)
 
     return fullDate
 
