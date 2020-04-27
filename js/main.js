@@ -11,10 +11,27 @@ loadData("toDoTheme") || saveData('toDoTheme',"light");
 totalTasks.innerHTML = loadData("totalTasks")
 completedTasks.innerHTML = loadData('completedTasks')
 
+
+// check if teask list container overflows
+function checkOverflow(el) {
+   let curOverflow = el.style.overflow;
+
+   if ( !curOverflow || curOverflow === "visible" )
+      el.style.overflow = "hidden";
+
+   var isOverflowing = el.clientWidth < el.scrollWidth 
+      || el.clientHeight < el.scrollHeight;
+
+   el.style.overflow = curOverflow;
+
+   console.log('overflow status:',isOverflowing)
+   
+   return isOverflowing;
+}
+
+
 function updateTask() {
-    console.log("Update Task");
     readTasks(taskStore, function(tasks){
-        console.log(tasks)
         let list = document.getElementById("task-list");
         let innerHTML = '';
         for (let i=0; i<tasks.length; i++) {
@@ -26,10 +43,18 @@ function updateTask() {
             `;
         }
         list.innerHTML = innerHTML;
+        
+        // if list container overflows, move flex to nowrap and unlimited height
+        if (checkOverflow(list)===true) {
+           list.style.flexWrap = "nowrap";
+           list.style.height = "auto";
+           list.style.alignItems="center";
+           list.style.margin="6rem 0 12rem"
+           list.style.marginLeft="10rem"
+        } 
     })
 
     readTasks(completedTaskStore, function(tasks){
-        console.log(tasks)
         let list = document.getElementById("completed-task-list");
         let innerHTML = '';
         tasks.reverse()
@@ -68,6 +93,17 @@ function deleteTaskOnClick(elem) {
                     let amountOfCompleted = Number(loadData('completedTasks'))+1;
                     saveData('completedTasks', amountOfCompleted);
                     completedTasks.innerHTML = loadData('completedTasks');
+
+                    // if list item is deleted, we try to revert list to wrap
+                    let list = document.getElementById("task-list");
+                    
+                    if (!checkOverflow(list)) {
+                        list.style.flexWrap = "wrap";
+                        list.style.height = "40vh";
+                        list.style.alignItems="flex-start";
+                        list.style.margin="3rem 0 0 6rem"
+                        console.log('hit-deleted-properties')
+                    }
                     updateTask()
 
 
@@ -75,7 +111,7 @@ function deleteTaskOnClick(elem) {
 
                 })
 
-
+                
 
 
             })
@@ -88,7 +124,6 @@ function deleteTaskOnClick(elem) {
 
 
 function updateTheme(theme) {
-    console.log(theme)
 
     let bgColor = theme == 'light' ? "255,255,255":"19,19,19";
     let textColor = theme == 'light' ? "12,12,12":"255,255,255";
