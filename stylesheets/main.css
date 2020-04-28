@@ -481,6 +481,7 @@ body {
   #task-list li {
     overflow-wrap: break-word;
     max-width: 80%;
+    cursor: pointer;
     list-style: none;
     font-size: 5em;
     margin: .35em 0;

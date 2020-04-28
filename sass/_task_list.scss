@@ -41,7 +41,7 @@
         overflow-wrap: break-word;
         // border: 1px solid black;
         max-width: 80%;
-
+        cursor:pointer;
 
         list-style: none;
         font-size: 5em;
@@ -49,6 +49,10 @@
         margin-right: 2em;
         color: rgba(var(--text-color),1)
     }
+
+    // li:hover {
+    //     cursor: pointer;
+    // }
 
     @media (max-width: 1500px) {font-size: 10px;}
     @media (max-width: 1400px) {height: 54vh;}
