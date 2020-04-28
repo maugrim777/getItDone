@@ -2,7 +2,7 @@ const input = document.getElementById('task-input')
 const totalTasks = document.getElementById('total')
 const completedTasks = document.getElementById('completed')
 const modal = document.getElementById('modal')
-const maxRecentlyDeleted = 5;
+const maxRecentlyDeleted = 10000;
 
 loadData("totalTasks") || saveData('totalTasks',0);
 loadData("completedTasks") || saveData('completedTasks',0);

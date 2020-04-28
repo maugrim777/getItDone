@@ -179,8 +179,15 @@ input#menu:checked ~ #menu-content {
     transition: all 0.2s; }
     #menu-content #completed-tasks h5 {
       font-size: var(--menu-font-size);
-      margin: 7rem 0 1.5rem;
+      margin: 1rem 0 1.5rem;
       text-transform: uppercase; }
+    #menu-content #completed-tasks #completed-task-list {
+      width: 100%;
+      max-height: 50vh;
+      overflow-y: scroll;
+      padding-right: 17px;
+      /* Increase/decrease this value for cross-browser compatibility */
+      box-sizing: content-box; }
     #menu-content #completed-tasks li {
       font-size: var(--menu-font-size);
       list-style: none;
@@ -232,13 +239,13 @@ input#menu:checked ~ #menu-content {
       #menu-content #theme h5 {
         text-align: center; }
     #menu-content #completed-tasks h5 {
-      margin: 10rem 0 4rem;
+      margin: 2rem 0 4rem;
       text-align: center; }
     #menu-content #completed-tasks li {
       margin-left: auto;
       margin-right: auto; }
     #menu-content #reset {
-      margin: 12rem auto 100px; }
+      margin: 2rem auto 50px; }
   input#menu:checked ~ #menu-controller {
     transform: translate(0, -10vh); } }
 

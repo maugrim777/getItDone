@@ -112,12 +112,23 @@ input#menu:checked {
     }
     
     #completed-tasks {
+        // overflow: hidden;
         transition: all $color-transition-time;
+        
         
         h5 {
             font-size: var(--menu-font-size);
-            margin: 7rem 0 1.5rem;
+            margin: 1rem 0 1.5rem;
             text-transform: uppercase;
+        }
+        
+        #completed-task-list {
+            width: 100%;
+            max-height: 50vh;
+    overflow-y:scroll;
+    padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+    box-sizing: content-box;
+            
         }
         
         li {
@@ -193,7 +204,7 @@ input#menu:checked {
         
         #completed-tasks {
             h5 {
-                margin: 10rem 0 4rem;
+                margin: 2rem 0 4rem;
                 text-align: center;
             }
             
@@ -204,7 +215,7 @@ input#menu:checked {
         }
         
         #reset {
-            margin: 12rem auto 100px;
+            margin: 2rem auto 50px;
         }
     }
     
