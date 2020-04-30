@@ -478,14 +478,22 @@ body {
   align-content: flex-start;
   user-select: none;
   font-size: 10px; }
-  #task-list li {
-    overflow-wrap: break-word;
+  #task-list div {
+    display: flex;
+    font-size: 10px;
     max-width: 80%;
     cursor: pointer;
+    align-items: center;
+    margin: .35em 0;
+    margin-right: 5em; }
+  #task-list li {
+    overflow-wrap: break-word;
     list-style: none;
     font-size: 5em;
-    margin: .35em 0;
-    margin-right: 2em;
+    color: rgba(var(--text-color), 1); }
+  #task-list i {
+    font-size: 3em;
+    margin-right: 15px;
     color: rgba(var(--text-color), 1); }
   @media (max-width: 1500px) {
     #task-list {
@@ -506,11 +514,18 @@ body {
       height: auto;
       align-items: center;
       margin: 6rem 0 12rem; }
+      #task-list div {
+        margin: 2rem 0; }
       #task-list li {
-        margin: 2rem 0;
-        font-size: 6.4rem; }
-      #task-list li:last-of-type {
-        margin-bottom: 10rem; } }
+        text-align: center;
+        font-size: 6.4rem;
+        align-self: center; }
+      #task-list div:last-of-type {
+        margin-bottom: 10rem; }
+      #task-list i {
+        font-size: 6.4rem;
+        align-self: center;
+        margin-right: 15px; } }
   #task-list li:first-child:nth-last-child(n+3),
   #task-list li:first-child:nth-last-child(n+3) ~ li {
     font-size: 4.5em; }
