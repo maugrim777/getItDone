@@ -35,12 +35,14 @@ function updateTask() {
         let list = document.getElementById("task-list");
         let innerHTML = '';
         for (let i=0; i<tasks.length; i++) {
-            
-            innerHTML += `
-                <li data-id='${tasks[i].id}' onclick='deleteTaskOnClick(this)'>
-                    ${tasks[i].title}
+          
+            innerHTML +=          
+            `<div class='listItem'>  
+                <i class="fas fa-check-circle" onclick='deleteTaskOnClick(this)'></i>         
+                <li class='task' data-id='${tasks[i].id}' contenteditable="true">
+                ${tasks[i].title}   
                 </li>
-            `;
+            </div>`;
         }
         list.innerHTML = innerHTML;
         
@@ -75,7 +77,10 @@ function onload() {
 }
 
 function deleteTaskOnClick(elem) {
-    let id = Number(elem.dataset.id);
+    let taskItem = elem.nextElementSibling
+    console.log(taskItem)
+    console.log(taskItem.dataset.id)
+    let id = Number(taskItem.dataset.id);
 
     let task = readOneTask(taskStore, id, function(task) {
 
@@ -179,9 +184,7 @@ input.addEventListener('keydown', function(e) {
             totalTasks.innerHTML = loadData("totalTasks")
         })
         updateTask()
-        // deleteAllTasks(taskStore)
-        // saveData('totalTasks',0);
-        // console.log('deleted')
+        
     }
 } )
 
@@ -204,3 +207,11 @@ function reset() {
     deleteAllTasks(completedTaskStore);
     updateTask();
 }
+
+
+document.getElementById("task-list").addEventListener('input', (ev) => {
+    // console.log(ev.inputType)
+    editTask(taskStore, ev.target, function(resp) {
+        return
+    } )
+});

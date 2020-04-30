@@ -22,7 +22,6 @@
 
 #task-list {
     max-width: 80vw;
-    // overflow-x: scroll;
 
 
 
@@ -37,22 +36,36 @@
     user-select: none;
     font-size: 10px;
 
-    li {
-        overflow-wrap: break-word;
-        // border: 1px solid black;
+    div {
+        display: flex;
+        font-size: 10px;
         max-width: 80%;
         cursor:pointer;
+        align-items: center;
+        margin: .35em 0;
+        margin-right: 5em;
+
+    }   
+
+    
+    li {
+        
+        overflow-wrap: break-word;
 
         list-style: none;
         font-size: 5em;
-        margin: .35em 0;
-        margin-right: 2em;
+        
         color: rgba(var(--text-color),1)
     }
 
-    // li:hover {
-    //     cursor: pointer;
-    // }
+    i {
+        font-size: 3em;
+        margin-right: 15px;
+        color: rgba(var(--text-color),1)
+
+
+    }
+   
 
     @media (max-width: 1500px) {font-size: 10px;}
     @media (max-width: 1400px) {height: 54vh;}
@@ -67,15 +80,25 @@
         margin: 6rem 0 12rem;
         
 
-        li {
+        div {
             margin: 2rem 0;
-            font-size: 6.4rem;
         }
 
-        li:last-of-type {
+        li {
+            text-align: center;
+            font-size: 6.4rem;
+            align-self: center;
+        }
+
+        div:last-of-type {
             margin-bottom: 10rem;
         }
 
+        i {
+            font-size: 6.4rem;
+            align-self: center;
+            margin-right: 15px;
+        }
 
     }
 

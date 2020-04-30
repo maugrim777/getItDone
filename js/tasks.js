@@ -89,3 +89,19 @@ function deleteAllTasks(store, success, error=defaultError) {
     request.onerror = error;
     request.onsuccess = success;
 }
+
+function editTask(store, task, success, error=defaultError) {
+    let transaction = database.transaction([store], "readwrite");
+    let objectStore = transaction.objectStore(store);
+    console.log(task)
+    
+    let request = objectStore.get(Number(task.dataset.id));
+   
+    request.onerror = error;
+    request.onsuccess = function() {
+        let data = request.result
+        data.title = task.innerText
+        let updateData = objectStore.put(data)
+        success('updated')
+    }
+}
